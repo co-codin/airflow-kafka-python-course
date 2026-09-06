@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from include.kafka_io import order_to_event  # noqa: E402
 from include.paths import (  # noqa: E402
     INCOMING_ORDERS,
     ORDER_COLUMNS,
@@ -124,16 +125,6 @@ def write_jsonl(path: Path, orders: list[dict[str, str]]) -> None:
     with path.open("w", encoding="utf-8") as handle:
         for order in orders:
             handle.write(json.dumps(order_to_event(order), separators=(",", ":")) + "\n")
-
-
-def order_to_event(order: dict[str, str]) -> dict:
-    """Kafka-friendly payload (numbers as numbers)."""
-    return {
-        **order,
-        "quantity": int(order["quantity"]),
-        "unit_price": float(order["unit_price"]),
-        "event_type": "order.created",
-    }
 
 
 def produce_kafka(orders: list[dict[str, str]], bootstrap: str, topic: str) -> int:
