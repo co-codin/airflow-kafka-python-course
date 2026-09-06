@@ -18,7 +18,7 @@ venv/
 htmlcov/
 
 # Airflow runtime (created by compose)
-logs/
+logs/*
 !logs/.gitkeep
 config/airflow.cfg
 config/airflow.cfg.bak

@@ -1,0 +1,7 @@
+# Extra packages layered on apache/airflow:3.3.1 (see Dockerfile).
+# Keep this list short: Airflow and most providers already ship in the image.
+apache-airflow-providers-apache-kafka>=1.10.0
+confluent-kafka>=2.6.0
+duckdb>=1.1.0
+Faker>=33.0.0
+pytest>=8.0.0
