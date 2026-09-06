@@ -1,0 +1,42 @@
+# Local env and secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+
+# Airflow runtime (created by compose)
+logs/
+!logs/.gitkeep
+config/airflow.cfg
+config/airflow.cfg.bak
+
+# Generated / pipeline outputs
+data/incoming/*
+!data/incoming/.gitkeep
+data/staging/*
+!data/staging/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/warehouse/*
+!data/warehouse/.gitkeep
+*.duckdb
+*.duckdb.wal
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
